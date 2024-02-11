@@ -1,0 +1,19 @@
+name: Publish
+
+on:
+  push:
+    branches:
+      - master
+    # tags:
+    #   - v*
+  workflow_dispatch:
+
+jobs:
+  publish:
+    uses: eberry/rbytes/.github/workflows/railsbytes.yml@master
+    with:
+      template: template/app-generator.rb
+    secrets:
+      RAILS_BYTES_ACCOUNT_ID: "${{ secrets.RAILS_BYTES_ACCOUNT_ID }}"
+      RAILS_BYTES_TOKEN: "${{ secrets.RAILS_BYTES_TOKEN }}"
+      RAILS_BYTES_TEMPLATE_ID: V4YsLQ
